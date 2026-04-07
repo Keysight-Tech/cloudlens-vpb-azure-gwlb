@@ -1,0 +1,17 @@
+# Terraform
+*.tfstate
+*.tfstate.backup
+*.tfplan
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+tfplan*
+
+# Installer binaries (download from Keysight portal)
+*.sh.installer
+vpb-*.sh
+CloudLens-vLM-*.vhd
+
+# OS
+.DS_Store
+*.swp

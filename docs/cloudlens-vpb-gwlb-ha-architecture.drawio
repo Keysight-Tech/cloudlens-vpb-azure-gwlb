@@ -1,0 +1,406 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram id="vpb-ha-arch" name="CloudLens vPB Active-Active HA — Azure GWLB">
+    <mxGraphModel dx="2548" dy="1045" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="3300" pageHeight="3600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-bar-bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0078D4;strokeColor=#005A9E;strokeWidth=3;arcSize=6;shadow=1;" value="" vertex="1">
+          <mxGeometry height="120" width="2520" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="title-text" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:30px;font-weight:bold;color:#FFFFFF;&quot;&gt;Keysight CloudLens vPB — Active-Active HA Architecture&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px;color:#B4D8F5;font-weight:600;&quot;&gt;Azure Gateway Load Balancer | Dual vPB Inline Monitoring | Cross-Zone Redundancy&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#89C4F4;&quot;&gt;End-to-End Traffic Flow: Internet → Standard LB → GWLB → vPB VXLAN Hairpin → Web Servers | Mirror → Tool VM&lt;/font&gt;" vertex="1">
+          <mxGeometry height="110" width="1000" x="350" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="keysight-badge" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4AF37;strokeWidth=2;arcSize=12;shadow=1;" value="&lt;font style=&quot;font-size:11px;font-weight:bold;color:#0078D4;&quot;&gt;KEYSIGHT&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#D4AF37;font-weight:600;&quot;&gt;CloudLens&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px;color:#6B7280;&quot;&gt;Network Visibility&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="150" x="2380" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="version-badge" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1B2A4A;strokeColor=#D4AF37;strokeWidth=1;arcSize=12;" value="&lt;font style=&quot;font-size:9px;color:#D4AF37;font-weight:bold;&quot;&gt;vPB v3.14&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px;color:#89C4F4;&quot;&gt;DPDK Engine&lt;/font&gt;" vertex="1">
+          <mxGeometry height="35" width="110" x="2400" y="97" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#E5E7EB;strokeWidth=1;arcSize=6;shadow=1;" value="" vertex="1">
+          <mxGeometry height="60" width="2520" x="40" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-title" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;b style=&quot;font-size:11px;color:#1B2A4A;&quot;&gt;TRAFFIC FLOWS:&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="120" x="60" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" parent="1" style="rounded=1;fillColor=#27AE60;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="16" width="16" x="190" y="166" as="geometry" />
+        </mxCell>
+        <mxCell id="l1t" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Inbound&lt;/b&gt; (External→Internal)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="180" x="210" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" parent="1" style="rounded=1;fillColor=#3498DB;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="16" width="16" x="400" y="166" as="geometry" />
+        </mxCell>
+        <mxCell id="l2t" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Outbound&lt;/b&gt; (Internal→External)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="190" x="420" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" parent="1" style="rounded=1;fillColor=#9B59B6;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="16" width="16" x="620" y="166" as="geometry" />
+        </mxCell>
+        <mxCell id="l3t" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Mirror to Tool&lt;/b&gt; (VNI 42)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="170" x="640" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" parent="1" style="rounded=1;fillColor=#E74C3C;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="16" width="16" x="820" y="166" as="geometry" />
+        </mxCell>
+        <mxCell id="l4t" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Health Probes&lt;/b&gt; (TCP:80)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="160" x="840" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" parent="1" style="rounded=1;fillColor=#FF9900;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="16" width="16" x="1010" y="166" as="geometry" />
+        </mxCell>
+        <mxCell id="l5t" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;VXLAN Tunnels&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="120" x="1030" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-ha" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:10px;color:#1B2A4A;&quot;&gt;&lt;b&gt;HA:&lt;/b&gt; Active-Active | 5-tuple hash | ~10s failover | Cross-Zone (1+2)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="450" x="1200" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-vxlan" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:10px;color:#1B2A4A;&quot;&gt;&lt;b&gt;VXLAN:&lt;/b&gt; External VNI 900/10800 | Internal VNI 901/10801 | Mirror VNI 42/4789&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="550" x="60" y="188" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-match" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:10px;color:#1B2A4A;&quot;&gt;&lt;b&gt;Direction Logic:&lt;/b&gt; dip LB_VIP → Internal (inbound) | sip LB_VIP → External (outbound) | VXLAN strip mode on ingress&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="700" x="620" y="188" as="geometry" />
+        </mxCell>
+        <mxCell id="sec1-bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F4F8;strokeColor=#CBD5E1;strokeWidth=2;arcSize=3;dashed=1;dashPattern=8 4;" value="" vertex="1">
+          <mxGeometry height="160" width="2520" x="40" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="sec1-label" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:13px;font-weight:bold;color:#1B2A4A;&quot;&gt;INTERNET / CLIENT ZONE&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="250" x="60" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="user1" parent="1" style="aspect=fixed;html=1;align=center;image;fontSize=12;image=img/lib/azure2/general/Globe.svg;" value="" vertex="1">
+          <mxGeometry height="65" width="65" x="570" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="user1-label" parent="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:11px;font-weight:bold;color:#1B2A4A;&quot;&gt;Internet Users&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#6B7280;&quot;&gt;HTTP requests to public VIP&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="530" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="rpglQneObR9mHLJoGPYA-1" edge="1" parent="1" source="user2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="user2-label" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user2" parent="1" style="shape=mxgraph.cisco.computers_and_peripherals.laptop;html=1;fillColor=#0078D4;strokeColor=#005A9E;" value="" vertex="1">
+          <mxGeometry height="38" width="55" x="370" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="user2-label" parent="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;" value="&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 9px;&quot;&gt;&lt;b&gt;curl http://4.152.232.35&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="18" width="140" x="330" y="322" as="geometry" />
+        </mxCell>
+        <mxCell id="scanner-box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE8E8;strokeColor=#E74C3C;strokeWidth=1;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:9px;color:#6B7280;&quot;&gt;Internet scanners, bots&lt;br&gt;(SYN to random ports)&lt;br&gt;&lt;b style=&quot;color:#E74C3C;&quot;&gt;Also visible on Tool VM&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="160" x="750" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="scan-note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDE7;strokeColor=#FF9900;strokeWidth=1;arcSize=8;" value="&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;&lt;b style=&quot;color:#FF9900;&quot;&gt;All traffic visible:&lt;/b&gt; The vPB mirrors&lt;br&gt;100% of flows — legitimate HTTP &amp;amp; port scans&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="240" x="750" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="sec2-bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FD;strokeColor=#93C5FD;strokeWidth=2;arcSize=3;" value="" vertex="1">
+          <mxGeometry height="200" width="2520" x="40" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="sec2-label" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:13px;font-weight:bold;color:#1B2A4A;&quot;&gt;AZURE STANDARD LOAD BALANCER — Entry Point&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#6B7280;&quot;&gt;Public VIP receives all client traffic. Chained to GWLB for inline inspection before DNAT to web servers.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="35" width="650" x="60" y="415" as="geometry" />
+        </mxCell>
+        <mxCell id="pub-ip-icon" parent="1" style="aspect=fixed;html=1;align=center;image;fontSize=12;image=img/lib/azure2/networking/Public_IP_Addresses.svg;" value="" vertex="1">
+          <mxGeometry height="40" width="50" x="330" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="pub-ip-label" parent="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:10px;font-weight:bold;color:#0078D4;&quot;&gt;Public IP&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px;font-weight:bold;color:#1B2A4A;&quot;&gt;4.152.232.35&lt;/font&gt;" vertex="1">
+          <mxGeometry height="35" width="130" x="290" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="std-lb-icon" parent="1" style="aspect=fixed;html=1;align=center;image;fontSize=12;image=img/lib/azure2/networking/Load_Balancers.svg;" value="" vertex="1">
+          <mxGeometry height="65" width="65" x="560" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="std-lb-label" parent="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:12px;font-weight:bold;color:#0078D4;&quot;&gt;Standard Load Balancer&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#6B7280;&quot;&gt;LoadBalancer-to-GWLB&lt;br&gt;HTTP:80 → Backend Pool&lt;br&gt;Health Probe: TCP:80 / 15s&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="220" x="480" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="gwlb-chain-label" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9900;strokeColor=#CC7A00;strokeWidth=2;arcSize=12;shadow=1;" value="&lt;font style=&quot;font-size:10px;font-weight:bold;color:#FFFFFF;&quot;&gt;GWLB Chain&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px;color:#FFF3E0;&quot;&gt;Frontend IP chained to&lt;br&gt;Gateway LB before DNAT&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="150" x="780" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="nat-note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDE7;strokeColor=#D4AF37;strokeWidth=1;arcSize=8;" value="&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;&lt;b style=&quot;color:#D4AF37;&quot;&gt;Key Insight:&lt;/b&gt; GWLB intercepts traffic&lt;br&gt;&lt;b&gt;BEFORE&lt;/b&gt; Standard LB applies DNAT.&lt;br&gt;Inner packet dst = LB VIP (4.152.232.35)&lt;br&gt;NOT the web server private IP.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="65" width="250" x="1050" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="ssh-nat" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b style=&quot;color:#1B2A4A;&quot;&gt;NAT Rules&lt;/b&gt;&lt;br&gt;:60001 → WebServer1:22&lt;br&gt;:60002 → WebServer2:22&lt;br&gt;:80 → Backend Pool (round-robin)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="65" width="200" x="1400" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="a-user-lb" edge="1" parent="1" source="user1" style="rounded=1;html=1;strokeColor=#27AE60;strokeWidth=3;flowAnimation=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;" target="std-lb-icon" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a-user-lb-label" connectable="0" parent="a-user-lb" style="edgeLabel;html=1;" value="&lt;font style=&quot;font-size:9px;color:#27AE60;font-weight:bold;&quot;&gt;HTTP GET :80&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-pip-lb" edge="1" parent="1" source="pub-ip-icon" style="rounded=1;html=1;strokeColor=#0078D4;strokeWidth=2;entryX=0;entryY=0.5;" target="std-lb-icon" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a-lb-chain" edge="1" parent="1" source="std-lb-icon" style="rounded=1;html=1;strokeColor=#FF9900;strokeWidth=3;flowAnimation=1;" target="gwlb-chain-label" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a-lb-chain-label" connectable="0" parent="a-lb-chain" style="edgeLabel;html=1;" value="&lt;font style=&quot;font-size:8px;color:#FF9900;font-weight:bold;&quot;&gt;Intercept before DNAT&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sec3-bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8F0;strokeColor=#FF9900;strokeWidth=3;arcSize=3;" value="" vertex="1">
+          <mxGeometry height="850" width="2520" x="40" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="sec3-label" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:15px;font-weight:bold;color:#1B2A4A;&quot;&gt;GATEWAY LOAD BALANCER + DUAL vPB ACTIVE-ACTIVE ZONE&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#6B7280;&quot;&gt;GWLB distributes VXLAN-encapsulated flows across both vPBs using 5-tuple hash. Each vPB independently hairpins traffic and mirrors to shared Tool VM.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="38" width="800" x="60" y="635" as="geometry" />
+        </mxCell>
+        <mxCell id="gwlb-icon" parent="1" style="aspect=fixed;html=1;align=center;image;fontSize=12;image=img/lib/azure2/networking/Load_Balancers.svg;" value="" vertex="1">
+          <mxGeometry height="65" width="65" x="560" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="gwlb-label" parent="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:13px;font-weight:bold;color:#FF9900;&quot;&gt;Gateway Load Balancer&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#1B2A4A;&quot;&gt;GWLoadBalancer | Internal: &lt;b&gt;10.1.1.4&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#6B7280;&quot;&gt;Provider Subnet: 10.1.1.0/24 | Health Probe: TCP:80 / 5s&lt;/font&gt;" vertex="1">
+          <mxGeometry height="48" width="330" x="430" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="gwlb-tunnels" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF9900;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#FF9900;&quot;&gt;GWLB VXLAN Tunnel Configuration&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;&lt;b&gt;External Tunnel:&lt;/b&gt; VNI 900 | UDP Port 10800&lt;br&gt;&lt;b&gt;Internal Tunnel:&lt;/b&gt; VNI 901 | UDP Port 10801&lt;br&gt;&lt;b&gt;Backend Pool:&lt;/b&gt; 2 backends (vPB-1 + vPB-2)&lt;br&gt;&lt;b&gt;Distribution:&lt;/b&gt; 5-tuple hash (src/dst IP, src/dst port, protocol)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="330" x="830" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="gwlb-ha" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#27AE60;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#27AE60;&quot;&gt;Failover Behavior&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;Probe fails 2x → unhealthy in ~10s&lt;br&gt;All new flows to surviving vPB&lt;br&gt;Existing TCP on dead vPB: break&lt;br&gt;Recovery: ~5-10s after probe passes&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="240" x="1220" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="a-chain-gwlb" edge="1" parent="1" source="gwlb-chain-label" style="rounded=1;html=1;strokeColor=#FF9900;strokeWidth=3;flowAnimation=1;entryX=0.5;entryY=0;" target="gwlb-icon" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a-gwlb-vpb1" edge="1" parent="1" source="gwlb-icon" style="rounded=1;html=1;strokeColor=#27AE60;strokeWidth=3;flowAnimation=1;exitX=0.25;exitY=1;entryX=0.5;entryY=0;" target="vpb1-box" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a-gwlb-vpb1-label" connectable="0" parent="a-gwlb-vpb1" style="edgeLabel;html=1;" value="&lt;font style=&quot;font-size:9px;font-weight:bold;color:#27AE60;&quot;&gt;VXLAN VNI 900&lt;br&gt;UDP:10800&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-gwlb-vpb2" edge="1" parent="1" source="gwlb-icon" style="rounded=1;html=1;strokeColor=#27AE60;strokeWidth=3;flowAnimation=1;exitX=0.75;exitY=1;entryX=0.5;entryY=0;" target="vpb2-box" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a-gwlb-vpb2-label" connectable="0" parent="a-gwlb-vpb2" style="edgeLabel;html=1;" value="&lt;font style=&quot;font-size:9px;font-weight:bold;color:#27AE60;&quot;&gt;VXLAN VNI 900&lt;br&gt;UDP:10800&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-vpb1-gwlb" edge="1" parent="1" source="vpb1-box" style="rounded=1;html=1;strokeColor=#3498DB;strokeWidth=2;dashed=1;dashPattern=6 3;flowAnimation=1;exitX=0.3;exitY=0;entryX=0.3;entryY=1;" target="gwlb-icon" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a-vpb1-gwlb-label" connectable="0" parent="a-vpb1-gwlb" style="edgeLabel;html=1;" value="&lt;font style=&quot;font-size:8px;color:#3498DB;&quot;&gt;VNI 901 / 10801&lt;br&gt;(hairpin return)&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-vpb2-gwlb" edge="1" parent="1" source="vpb2-box" style="rounded=1;html=1;strokeColor=#3498DB;strokeWidth=2;dashed=1;dashPattern=6 3;flowAnimation=1;exitX=0.7;exitY=0;entryX=0.7;entryY=1;" target="gwlb-icon" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb1-box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0078D4;strokeWidth=3;arcSize=4;shadow=1;" value="" vertex="1">
+          <mxGeometry height="580" width="530" x="80" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb1-zone" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0078D4;strokeColor=none;arcSize=20;" value="&lt;font style=&quot;font-size:10px;font-weight:bold;color:#FFFFFF;&quot;&gt;ZONE 1&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="70" x="90" y="868" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb1-title" parent="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:16px;font-weight:bold;color:#0078D4;&quot;&gt;vPB-1 (Primary)&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#6B7280;&quot;&gt;vPB-GWLB | Standard_D8_v5 | vPB v3.14.0-30&lt;/font&gt;" vertex="1">
+          <mxGeometry height="35" width="380" x="130" y="865" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb1-vm-icon" parent="1" style="aspect=fixed;html=1;align=center;image;fontSize=12;image=img/lib/azure2/compute/Virtual_Machine.svg;" value="" vertex="1">
+          <mxGeometry height="42" width="45" x="510" y="865" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb1-pip" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FD;strokeColor=#93C5FD;strokeWidth=1;arcSize=8;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b style=&quot;color:#0078D4;&quot;&gt;Public IP:&lt;/b&gt; 4.152.149.221&lt;br&gt;SSH: vpb@:22 | CLI: admin@:2222&lt;/font&gt;" vertex="1">
+          <mxGeometry height="35" width="220" x="100" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb1-eth0" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#0078D4;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#0078D4;&quot;&gt;eth0 — Management&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;IP: 10.1.2.6 | Subnet: Management (10.1.2.0/24)&lt;br&gt;Mode: host-managed | Accelerated: No&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="490" x="100" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb1-eth1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9900;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#FF9900;&quot;&gt;eth1 — Ingress (GWLB-facing)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;IP: &lt;b&gt;10.1.1.5&lt;/b&gt; | Subnet: Provider (10.1.1.0/24) | Accelerated: Yes (SR-IOV)&lt;br&gt;ingress-mode ip | arp | icmp | load-balancer-probe port 80&lt;br&gt;&lt;b&gt;ingress-filter vxlan port 10800&lt;/b&gt; (strip) | &lt;b&gt;ingress-filter vxlan port 10801&lt;/b&gt; (strip)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="490" x="100" y="1025" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb1-eth2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#9B59B6;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#9B59B6;&quot;&gt;eth2 — Egress (Tool-facing)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;IP: &lt;b&gt;10.1.3.4&lt;/b&gt; | Subnet: Tool (10.1.3.0/24) | Accelerated: Yes (SR-IOV)&lt;br&gt;ingress-mode ip | arp | icmp&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="490" x="100" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb1-tunnels" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDE7;strokeColor=#D4AF37;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#D4AF37;&quot;&gt;VXLAN Tunnels&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;&lt;b&gt;vxlan1:&lt;/b&gt; eth1 → 10.1.1.4 | VNI 900 | UDP 10800 (External)&lt;br&gt;&lt;b&gt;vxlan2:&lt;/b&gt; eth1 → 10.1.1.4 | VNI 901 | UDP 10801 (Internal)&lt;br&gt;&lt;b&gt;vxlan3:&lt;/b&gt; eth2 → 10.1.3.5 | VNI 42 | UDP 4789 (Mirror to Tool)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="75" width="490" x="100" y="1195" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb1-rules" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#27AE60;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#27AE60;&quot;&gt;Match Rules (Direction-Aware)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;&lt;b&gt;P1:&lt;/b&gt; any ingress eth1 &lt;b style=&quot;color:#27AE60;&quot;&gt;dip 4.152.232.35/32&lt;/b&gt; → vxlan2 + vxlan3 &lt;font color=&quot;#6B7280&quot;&gt;(Inbound → Internal + Mirror)&lt;/font&gt;&lt;br&gt;&lt;b&gt;P2:&lt;/b&gt; any ingress eth1 &lt;b style=&quot;color:#3498DB;&quot;&gt;sip 4.152.232.35/32&lt;/b&gt; → vxlan1 + vxlan3 &lt;font color=&quot;#6B7280&quot;&gt;(Outbound → External + Mirror)&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="65" width="490" x="100" y="1285" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb1-health" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE8E8;strokeColor=#E74C3C;strokeWidth=1;arcSize=8;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b style=&quot;color:#E74C3C;&quot;&gt;Health Probe Responder&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#374151;&quot;&gt;Python HTTP server on 0.0.0.0:80 (kernel path)&lt;br&gt;GWLB probes via 168.63.129.16 → synthetic NIC&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="490" x="100" y="1365" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb1-license" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F4F8;strokeColor=#CBD5E1;strokeWidth=1;arcSize=8;" value="&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;&lt;b&gt;License:&lt;/b&gt; Advanced | Server: 10.1.2.5 (vLM)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="250" x="100" y="1420" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb2-box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0078D4;strokeWidth=3;arcSize=4;shadow=1;" value="" vertex="1">
+          <mxGeometry height="580" width="530" x="700" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb2-zone" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#27AE60;strokeColor=none;arcSize=20;" value="&lt;font style=&quot;font-size:10px;font-weight:bold;color:#FFFFFF;&quot;&gt;ZONE 2&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="70" x="710" y="868" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb2-title" parent="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:16px;font-weight:bold;color:#0078D4;&quot;&gt;vPB-2 (Secondary)&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#6B7280;&quot;&gt;vPB2-GWLB | Standard_D8_v5 | vPB v3.14.0-30&lt;/font&gt;" vertex="1">
+          <mxGeometry height="35" width="380" x="750" y="865" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb2-vm-icon" parent="1" style="aspect=fixed;html=1;align=center;image;fontSize=12;image=img/lib/azure2/compute/Virtual_Machine.svg;" value="" vertex="1">
+          <mxGeometry height="42" width="45" x="1130" y="865" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb2-pip" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FD;strokeColor=#93C5FD;strokeWidth=1;arcSize=8;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b style=&quot;color:#0078D4;&quot;&gt;Public IP:&lt;/b&gt; 48.211.143.213&lt;br&gt;SSH: vpb@:22 | CLI: admin@:2222&lt;/font&gt;" vertex="1">
+          <mxGeometry height="35" width="220" x="720" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb2-eth0" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#0078D4;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#0078D4;&quot;&gt;eth0 — Management&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;IP: 10.1.2.7 | Subnet: Management (10.1.2.0/24)&lt;br&gt;Mode: host-managed | Accelerated: No&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="490" x="720" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb2-eth1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9900;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#FF9900;&quot;&gt;eth1 — Ingress (GWLB-facing)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;IP: &lt;b&gt;10.1.1.6&lt;/b&gt; | Subnet: Provider (10.1.1.0/24) | Accelerated: Yes (SR-IOV)&lt;br&gt;ingress-mode ip | arp | icmp | load-balancer-probe port 80&lt;br&gt;&lt;b&gt;ingress-filter vxlan port 10800&lt;/b&gt; (strip) | &lt;b&gt;ingress-filter vxlan port 10801&lt;/b&gt; (strip)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="490" x="720" y="1025" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb2-eth2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#9B59B6;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#9B59B6;&quot;&gt;eth2 — Egress (Tool-facing)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;IP: &lt;b&gt;10.1.3.6&lt;/b&gt; | Subnet: Tool (10.1.3.0/24) | Accelerated: Yes (SR-IOV)&lt;br&gt;ingress-mode ip | arp | icmp&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="490" x="720" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb2-tunnels" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDE7;strokeColor=#D4AF37;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#D4AF37;&quot;&gt;VXLAN Tunnels&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;&lt;b&gt;vxlan1:&lt;/b&gt; eth1 → 10.1.1.4 | VNI 900 | UDP 10800 (External)&lt;br&gt;&lt;b&gt;vxlan2:&lt;/b&gt; eth1 → 10.1.1.4 | VNI 901 | UDP 10801 (Internal)&lt;br&gt;&lt;b&gt;vxlan3:&lt;/b&gt; eth2 → 10.1.3.5 | VNI 42 | UDP 4789 (Mirror to Tool)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="75" width="490" x="720" y="1195" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb2-rules" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#27AE60;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#27AE60;&quot;&gt;Match Rules (Direction-Aware)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;&lt;b&gt;P1:&lt;/b&gt; any ingress eth1 &lt;b style=&quot;color:#27AE60;&quot;&gt;dip 4.152.232.35/32&lt;/b&gt; → vxlan2 + vxlan3 &lt;font color=&quot;#6B7280&quot;&gt;(Inbound → Internal + Mirror)&lt;/font&gt;&lt;br&gt;&lt;b&gt;P2:&lt;/b&gt; any ingress eth1 &lt;b style=&quot;color:#3498DB;&quot;&gt;sip 4.152.232.35/32&lt;/b&gt; → vxlan1 + vxlan3 &lt;font color=&quot;#6B7280&quot;&gt;(Outbound → External + Mirror)&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="65" width="490" x="720" y="1285" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb2-health" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE8E8;strokeColor=#E74C3C;strokeWidth=1;arcSize=8;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b style=&quot;color:#E74C3C;&quot;&gt;Health Probe Responder&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#374151;&quot;&gt;Python HTTP server on 0.0.0.0:80 (kernel path)&lt;br&gt;GWLB probes via 168.63.129.16 → synthetic NIC&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="490" x="720" y="1365" as="geometry" />
+        </mxCell>
+        <mxCell id="vpb2-license" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F4F8;strokeColor=#CBD5E1;strokeWidth=1;arcSize=8;" value="&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;&lt;b&gt;License:&lt;/b&gt; Advanced | Server: 10.1.2.5 (vLM)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="250" x="720" y="1420" as="geometry" />
+        </mxCell>
+        <mxCell id="hairpin-detail" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1B2A4A;strokeColor=#D4AF37;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:12px;font-weight:bold;color:#D4AF37;&quot;&gt;VXLAN Hairpin Flow&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#FFFFFF;&quot;&gt;&lt;b style=&quot;color:#27AE60;&quot;&gt;INBOUND PATH:&lt;/b&gt;&lt;br&gt;User → Std LB VIP → GWLB wraps VNI 900/10800&lt;br&gt;→ vPB strips VXLAN → inner dip = LB VIP&lt;br&gt;→ match P1 → egress vxlan2 (VNI 901/10801)&lt;br&gt;→ GWLB unwraps → Std LB DNAT → Web Server&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#3498DB;&quot;&gt;OUTBOUND PATH:&lt;/b&gt;&lt;br&gt;Web Server → GWLB wraps VNI 901/10801&lt;br&gt;→ vPB strips VXLAN → inner sip = LB VIP&lt;br&gt;→ match P2 → egress vxlan1 (VNI 900/10800)&lt;br&gt;→ GWLB unwraps → response to User&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#9B59B6;&quot;&gt;MIRROR (both directions):&lt;/b&gt;&lt;br&gt;Copy of every packet → vxlan3 (VNI 42/4789)&lt;br&gt;→ Tool VM for analysis / tcpdump&lt;/font&gt;" vertex="1">
+          <mxGeometry height="310" width="380" x="1340" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="dpdk-note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F4F8;strokeColor=#CBD5E1;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#1B2A4A;&quot;&gt;DPDK Data Plane Architecture&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;&lt;b&gt;VF NIC (SR-IOV):&lt;/b&gt; Data plane traffic → DPDK engine&lt;br&gt;&lt;b&gt;Synthetic NIC:&lt;/b&gt; Management + health probes → kernel&lt;br&gt;&lt;b&gt;Key:&lt;/b&gt; GWLB health probes arrive on kernel path,&lt;br&gt;NOT DPDK — requires OS-level HTTP server on port 80&lt;br&gt;&lt;b&gt;packet-dump:&lt;/b&gt; Uses midpdk_ethN mirror interface&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="380" x="1340" y="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="scale-note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#27AE60;strokeWidth=1;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#27AE60;&quot;&gt;Scalability&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;GWLB backend pool: up to 300 instances&lt;br&gt;Add vPB-3 (Zone 3), vPB-4, vPB-5...&lt;br&gt;Same config per vPB, identical match rules&lt;br&gt;Each gets proportional share of flows&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="380" x="1340" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="sec4-bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FFF0;strokeColor=#27AE60;strokeWidth=2;arcSize=3;" value="" vertex="1">
+          <mxGeometry height="230" width="1280" x="40" y="1500" as="geometry" />
+        </mxCell>
+        <mxCell id="sec4-label" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:13px;font-weight:bold;color:#1B2A4A;&quot;&gt;BACKEND WEB SERVERS — Web Subnet (10.1.0.0/24)&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#6B7280;&quot;&gt;Traffic arrives here AFTER GWLB hairpin completes and Standard LB applies DNAT to backend pool.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="35" width="700" x="60" y="1505" as="geometry" />
+        </mxCell>
+        <mxCell id="ws1-icon" parent="1" style="aspect=fixed;html=1;align=center;image;fontSize=12;image=img/lib/azure2/compute/Virtual_Machine.svg;" value="" vertex="1">
+          <mxGeometry height="46" width="50" x="200" y="1560" as="geometry" />
+        </mxCell>
+        <mxCell id="ws1-label" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#27AE60;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:11px;font-weight:bold;color:#27AE60;&quot;&gt;WebServer1&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;IP: &lt;b&gt;10.1.0.4&lt;/b&gt; | nginx&lt;br&gt;SSH: LB_VIP:60001&lt;br&gt;HTTP 200 ✓&lt;/font&gt;" vertex="1">
+          <mxGeometry height="65" width="210" x="120" y="1615" as="geometry" />
+        </mxCell>
+        <mxCell id="ws2-icon" parent="1" style="aspect=fixed;html=1;align=center;image;fontSize=12;image=img/lib/azure2/compute/Virtual_Machine.svg;" value="" vertex="1">
+          <mxGeometry height="46" width="50" x="530" y="1560" as="geometry" />
+        </mxCell>
+        <mxCell id="ws2-label" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#27AE60;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:11px;font-weight:bold;color:#27AE60;&quot;&gt;WebServer2&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;IP: &lt;b&gt;10.1.0.5&lt;/b&gt; | nginx&lt;br&gt;SSH: LB_VIP:60002&lt;br&gt;HTTP 200 ✓&lt;/font&gt;" vertex="1">
+          <mxGeometry height="65" width="210" x="450" y="1615" as="geometry" />
+        </mxCell>
+        <mxCell id="a-gwlb-ws" edge="1" parent="1" source="gwlb-icon" style="rounded=1;html=1;strokeColor=#27AE60;strokeWidth=3;flowAnimation=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="ws1-icon" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="592" y="830" />
+              <mxPoint x="225" y="830" />
+              <mxPoint x="225" y="1560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-gwlb-ws-label" connectable="0" parent="a-gwlb-ws" style="edgeLabel;html=1;" value="&lt;font style=&quot;font-size:8px;color:#27AE60;font-weight:bold;&quot;&gt;After hairpin:&lt;br&gt;GWLB → Std LB DNAT&lt;br&gt;→ Web Server&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.7" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sec5-bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#9B59B6;strokeWidth=2;arcSize=3;" value="" vertex="1">
+          <mxGeometry height="230" width="420" x="1340" y="1500" as="geometry" />
+        </mxCell>
+        <mxCell id="sec5-label" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:13px;font-weight:bold;color:#1B2A4A;&quot;&gt;MONITORING — Tool Subnet (10.1.3.0/24)&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#6B7280;&quot;&gt;Receives VXLAN VNI 42 mirror from BOTH vPBs&lt;/font&gt;" vertex="1">
+          <mxGeometry height="35" width="380" x="1360" y="1505" as="geometry" />
+        </mxCell>
+        <mxCell id="tool-icon" parent="1" style="aspect=fixed;html=1;align=center;image;fontSize=12;image=img/lib/azure2/compute/Virtual_Machine.svg;" value="" vertex="1">
+          <mxGeometry height="51" width="55" x="1505" y="1555" as="geometry" />
+        </mxCell>
+        <mxCell id="tool-label" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9B59B6;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:11px;font-weight:bold;color:#9B59B6;&quot;&gt;Tool VM (ToolGWLBVM)&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;IP: &lt;b&gt;10.1.3.5&lt;/b&gt; | Public: 132.196.140.43&lt;br&gt;SSH: azureuser@ | tcpdump -i eth0 udp port 4789&lt;br&gt;&lt;b&gt;Receives mirrors from:&lt;/b&gt;&lt;br&gt;vPB-1 (10.1.3.4) + vPB-2 (10.1.3.6)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="370" x="1370" y="1615" as="geometry" />
+        </mxCell>
+        <mxCell id="a-vpb1-tool" edge="1" parent="1" source="vpb1-eth2" style="rounded=1;html=1;strokeColor=#9B59B6;strokeWidth=2;dashed=1;dashPattern=6 3;flowAnimation=1;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" target="tool-label" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="345" y="1657" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-vpb1-tool-label" connectable="0" parent="a-vpb1-tool" style="edgeLabel;html=1;" value="&lt;font style=&quot;font-size:8px;color:#9B59B6;font-weight:bold;&quot;&gt;vxlan3 VNI 42&lt;br&gt;from 10.1.3.4&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-vpb2-tool" edge="1" parent="1" source="vpb2-eth2" style="rounded=1;html=1;strokeColor=#9B59B6;strokeWidth=2;dashed=1;dashPattern=6 3;flowAnimation=1;exitX=0.5;exitY=1;entryX=0.3;entryY=0;" target="tool-label" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="965" y="1210" />
+              <mxPoint x="1481" y="1210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-vpb2-tool-label" connectable="0" parent="a-vpb2-tool" style="edgeLabel;html=1;" value="&lt;font style=&quot;font-size:8px;color:#9B59B6;font-weight:bold;&quot;&gt;vxlan3 VNI 42&lt;br&gt;from 10.1.3.6&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vlm-box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#1B2A4A;&quot;&gt;vLM (License Manager)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;IP: 10.1.2.5 | Public: 20.15.68.17&lt;br&gt;HTTPS:443 | Management Subnet&lt;br&gt;Serves Advanced license to both vPBs&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="250" x="1830" y="1520" as="geometry" />
+        </mxCell>
+        <mxCell id="net-bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#E5E7EB;strokeWidth=1;arcSize=4;" value="" vertex="1">
+          <mxGeometry height="300" width="720" x="1830" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="net-icon" parent="1" style="aspect=fixed;html=1;align=center;image;fontSize=12;image=img/lib/azure2/networking/Virtual_Networks.svg;" value="" vertex="1">
+          <mxGeometry height="24" width="40" x="1845" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="net-title" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:13px;font-weight:bold;color:#1B2A4A;&quot;&gt;Virtual Network: CloudLensGwLB-vnet (10.1.0.0/16)&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#6B7280;&quot;&gt;Resource Group: CloudLensGwLB-rg | Region: eastus2&lt;/font&gt;" vertex="1">
+          <mxGeometry height="35" width="450" x="1895" y="637" as="geometry" />
+        </mxCell>
+        <mxCell id="subnet-web" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#27AE60;strokeWidth=2;arcSize=8;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#27AE60;&quot;&gt;Web Subnet&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;10.1.0.0/24&lt;br&gt;WebServer1 (.4)&lt;br&gt;WebServer2 (.5)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="160" x="1850" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="subnet-provider" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9900;strokeWidth=2;arcSize=8;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#FF9900;&quot;&gt;Provider Subnet&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;10.1.1.0/24&lt;br&gt;GWLB (.4)&lt;br&gt;vPB-1 eth1 (.5) | vPB-2 eth1 (.6)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="200" x="2030" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="subnet-mgmt" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#0078D4;strokeWidth=2;arcSize=8;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#0078D4;&quot;&gt;Management Subnet&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;10.1.2.0/24&lt;br&gt;vLM (.5) | vPB-1 eth0 (.6)&lt;br&gt;vPB-2 eth0 (.7)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="200" x="2250" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="subnet-tool" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#9B59B6;strokeWidth=2;arcSize=8;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#9B59B6;&quot;&gt;Tool Subnet&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;10.1.3.0/24&lt;br&gt;vPB-1 eth2 (.4) | Tool VM (.5)&lt;br&gt;vPB-2 eth2 (.6)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="200" x="1850" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="nsg-icon" parent="1" style="aspect=fixed;html=1;align=center;image;fontSize=12;image=img/lib/azure2/networking/Network_Security_Groups.svg;" value="" vertex="1">
+          <mxGeometry height="40" width="40" x="2080" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="nsg-label" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;&lt;b&gt;NSG:&lt;/b&gt; vpb-nsg&lt;br&gt;Allow: SSH, HTTP, VXLAN&lt;br&gt;(10800, 10801, 4789)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="160" x="2125" y="785" as="geometry" />
+        </mxCell>
+        <mxCell id="az-zones" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FD;strokeColor=#0078D4;strokeWidth=2;arcSize=8;shadow=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#0078D4;&quot;&gt;Availability Zones&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#374151;&quot;&gt;&lt;b&gt;Zone 1:&lt;/b&gt; vPB-1 | &lt;b&gt;Zone 2:&lt;/b&gt; vPB-2&lt;br&gt;Cross-zone deployment protects against&lt;br&gt;zone-wide Azure outages&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="65" width="240" x="2300" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="sec8-bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1B2A4A;strokeColor=#D4AF37;strokeWidth=2;arcSize=6;shadow=1;" value="" vertex="1">
+          <mxGeometry height="370" width="720" x="1830" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="sec8-title" parent="1" style="text;html=1;align=left;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:13px;font-weight:bold;color:#D4AF37;&quot;&gt;VERIFIED TEST RESULTS&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="250" x="1850" y="970" as="geometry" />
+        </mxCell>
+        <mxCell id="test-active" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#27AE60;strokeColor=none;arcSize=8;" value="&lt;font style=&quot;font-size:11px;font-weight:bold;color:#FFFFFF;&quot;&gt;Active-Active: 10/10 HTTP 200&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#E8F5E9;&quot;&gt;~50ms avg latency | Both vPBs sharing load&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="330" x="1850" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="test-failover" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9900;strokeColor=none;arcSize=8;" value="&lt;font style=&quot;font-size:11px;font-weight:bold;color:#FFFFFF;&quot;&gt;Failover: 10/10 HTTP 200&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#FFF3E0;&quot;&gt;vPB-1 killed → vPB-2 handles 100% | Zero downtime&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="330" x="1850" y="1055" as="geometry" />
+        </mxCell>
+        <mxCell id="test-recovery" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3498DB;strokeColor=none;arcSize=8;" value="&lt;font style=&quot;font-size:11px;font-weight:bold;color:#FFFFFF;&quot;&gt;Recovery: 5/5 HTTP 200&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#E8F4FD;&quot;&gt;vPB-1 restored → GWLB redistributes in ~10s&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="330" x="1850" y="1110" as="geometry" />
+        </mxCell>
+        <mxCell id="test-mirror" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9B59B6;strokeColor=none;arcSize=8;" value="&lt;font style=&quot;font-size:11px;font-weight:bold;color:#FFFFFF;&quot;&gt;Mirror: Traffic from BOTH vPBs&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#F3E8FF;&quot;&gt;Tool VM tcpdump: 10.1.3.4 (vPB-1) + 10.1.3.6 (vPB-2)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="330" x="1850" y="1165" as="geometry" />
+        </mxCell>
+        <mxCell id="test-cmd" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2C3E50;strokeColor=#34495E;strokeWidth=1;arcSize=6;" value="&lt;font style=&quot;font-family:monospace;font-size:9px;color:#27AE60;&quot;&gt;$ curl http://4.152.232.35&lt;br&gt;HTTP/1.1 200 OK&lt;br&gt;Server: nginx/1.18.0 (Ubuntu)&lt;br&gt;&lt;br&gt;$ for i in $(seq 1 10); do&lt;br&gt;  curl -s -o /dev/null -w &quot;%{http_code} %{time_total}s\\n&quot;&lt;br&gt;  http://4.152.232.35; done&lt;br&gt;200 0.050s&lt;br&gt;200 0.049s&lt;br&gt;200 0.047s&lt;br&gt;...&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="330" x="1850" y="1225" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" parent="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:10px;color:#6B7280;&quot;&gt;Keysight CloudLens vPB v3.14 | Azure GWLB Active-Active HA | Terraform Automated Deployment | Region: eastus2&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#9CA3AF;&quot;&gt;Architecture validated: April 2026 | Resource Group: CloudLensGwLB-rg&lt;/font&gt;" vertex="1">
+          <mxGeometry height="35" width="800" x="600" y="1760" as="geometry" />
+        </mxCell>
+        <mxCell id="rpglQneObR9mHLJoGPYA-2" edge="1" parent="1" style="rounded=1;html=1;strokeColor=#27AE60;strokeWidth=3;flowAnimation=1;entryX=0;entryY=0.5;exitX=0.155;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryDx=0;entryDy=0;" target="user1" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="430.5999999999999" y="305" as="sourcePoint" />
+            <mxPoint x="450" y="415" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rpglQneObR9mHLJoGPYA-3" connectable="0" parent="rpglQneObR9mHLJoGPYA-2" style="edgeLabel;html=1;" value="&lt;font style=&quot;font-size:9px;color:#27AE60;font-weight:bold;&quot;&gt;HTTP GET :80&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

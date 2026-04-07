@@ -1,0 +1,16 @@
+# Copy this file to terraform.tfvars and fill in your values
+# terraform.tfvars is git-ignored and will not be committed
+
+subscription_id    = "YOUR-AZURE-SUBSCRIPTION-ID"
+admin_password     = "YourSecurePassword123!"
+vpb_admin_password = "YourVPBPassword123!"
+vpb_cli_password   = "ixia"
+
+# Local paths to installer files (download from Keysight support portal)
+vpb_installer_path = "/path/to/vpb-3.14.0-30-install-package.sh"
+vlm_vhd_path       = "/path/to/CloudLens-vLM-1.7.vhd"
+
+# Optional overrides
+# location           = "eastus2"
+# vpb_vm_size        = "Standard_D8_v5"
+# web_vm_size        = "Standard_D2s_v3"
