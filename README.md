@@ -4,45 +4,9 @@ Terraform-automated deployment of **dual Keysight CloudLens Virtual Packet Broke
 
 ## Architecture
 
-```
-                        ┌──────────────┐
-                        │   Internet   │
-                        └──────┬───────┘
-                               │
-                    ┌──────────▼──────────┐
-                    │   Standard LB       │
-                    │   (Public IP:80)    │
-                    │   Chained → GWLB   │
-                    └──────────┬──────────┘
-                               │
-                    ┌──────────▼──────────┐
-                    │  Gateway Load       │
-                    │  Balancer (GWLB)    │
-                    │  10.1.1.0/24        │
-                    │  VXLAN Tunnels      │
-                    └───┬────────────┬────┘
-                        │            │
-              ┌─────────▼──┐   ┌────▼────────┐
-              │  vPB-1     │   │  vPB-2      │
-              │  Zone 1    │   │  Zone 2     │
-              │  10.1.1.5  │   │  10.1.1.6   │
-              │  (Active)  │   │  (Active)   │
-              └─────┬──┬───┘   └───┬──┬──────┘
-                    │  │           │  │
-         Hairpin────┘  │Mirror     │  │
-                       ▼           ▼  │
-              ┌────────────────────┐  │
-              │    Tool VM         │◄─┘ Mirror
-              │    10.1.3.0/24     │
-              │    (tcpdump/Wireshark)│
-              └────────────────────┘
-                               │
-                    ┌──────────▼──────────┐
-                    │   Web Servers       │
-                    │   10.1.0.0/24       │
-                    │   (NGINX)           │
-                    └─────────────────────┘
-```
+![CloudLens vPB Active-Active HA Architecture](docs/cloudlens-vpb-gwlb-ha-architecture.png)
+
+> **Editable source:** [`docs/cloudlens-vpb-gwlb-ha-architecture.drawio`](docs/cloudlens-vpb-gwlb-ha-architecture.drawio) — open with [draw.io Desktop](https://github.com/jgraph/drawio-desktop/releases) or [app.diagrams.net](https://app.diagrams.net)
 
 **Traffic Flow:** Internet → Standard LB → GWLB → vPB VXLAN hairpin → Web Servers (both directions mirrored to Tool VM)
 
